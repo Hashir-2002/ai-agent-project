@@ -1,4 +1,4 @@
-from openai import OpenAI
+import openai
 import streamlit as st
 import os
 import json
@@ -16,7 +16,7 @@ if not api_key:
 if not api_key:
     raise ValueError("GROQ_API_KEY not found in secrets or env variables")
 
-client = OpenAI(
+client = openai.OpenAI(
     api_key=api_key,
     base_url="https://api.groq.com/openai/v1"
 )
