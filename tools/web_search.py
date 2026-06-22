@@ -1,19 +1,17 @@
 from duckduckgo_search import DDGS
 
-def web_search(question: str) -> str:
+def web_search(question: str):
     try:
         results = DDGS().text(question, max_results=3)
 
-        if not results:
-            return "No search results found."
+        output = []
 
-        parts = []
         for r in results:
-            parts.append(f"{r['body']}")
+            output.append(
+                f"{r['title']}\n{r['body']}\n{r['href']}"
+            )
 
-        paragraph = " ".join(parts)
-
-        return f"🌐 {paragraph}"
+        return "🌐 Search Results:\n\n" + "\n\n".join(output)
 
     except Exception as e:
         return f"Search failed: {str(e)}"
