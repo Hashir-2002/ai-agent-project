@@ -30,8 +30,15 @@ def run_agent(user_input: str):
         result = calculator(tool_input)
         return f"🧮 Result: {result}"
 
+
     elif action == "web_search":
+
         result = web_search(tool_input)
+
+        if not result or not result.strip():
+            return "🌐 No results found. Try rephrasing your question."
+
+        return f"🌐 Search Results:\n\n{result}"
 
         # clean formatting for Streamlit
         if isinstance(result, list):
