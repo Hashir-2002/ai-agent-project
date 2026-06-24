@@ -1,4 +1,4 @@
-from duckduckgo_search import DDGS
+from ddgs import DDGS
 def web_search(question: str):
     try:
         results = DDGS().text(question, max_results=3)
